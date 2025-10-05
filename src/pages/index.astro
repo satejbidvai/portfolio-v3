@@ -10,7 +10,52 @@ import '../styles/global.css'; // TODO: Move to shared layout
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<body>
-		<h1 class="text-3xl font-bold w-full text-center">Astro</h1>
+	<body class="mx-auto max-w-lg md:max-w-xl lg:max-w-2xl mb-64 px-6 bg-background text-primary">
+		<main class="mt-12">
+			<h1 class="text-3xl font-bold w-full mb-10">Satej Bidvai</h1>
+			<section class="space-y-6">
+				<!-- <div class="space-y-4">
+					<h3 class="text-xl font-medium">Featured Projects</h3>
+					<div class="grid gap-4">
+						<article
+							class="p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
+						>
+							<h4 class="font-medium">Project One</h4>
+							<p class="opacity-75">A brief description of your first featured project.</p>
+						</article>
+						<article
+							class="p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
+						>
+							<h4 class="font-medium">Project Two</h4>
+							<p class="opacity-75">A brief description of your second featured project.</p>
+						</article>
+					</div>
+				</div> -->
+
+				<div class="space-y-4">
+					<h3 class="text-xl font-medium">Get in Touch</h3>
+					<div class="flex gap-4">
+						<a
+							href="https://github.com/satejbidvai"
+							class="opacity-75 hover:opacity-100 transition-opacity"
+							target="_blank"
+							rel="noopener noreferrer">GitHub</a
+						>
+						<a
+							href="https://www.linkedin.com/in/satej-bidvai/"
+							class="opacity-75 hover:opacity-100 transition-opacity"
+							target="_blank"
+							rel="noopener noreferrer">LinkedIn</a
+						>
+						<a
+							href="mailto:satej.bidvai+portfolio@gmail.com"
+							class="opacity-75 hover:opacity-100 transition-opacity"
+							target="_blank"
+							rel="noopener noreferrer">Email</a
+						>
+					</div>
+				</div>
+			</section>
+		</main>
 	</body>
 </html>
