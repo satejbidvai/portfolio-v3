@@ -3,18 +3,46 @@ import '../styles/global.css'; // TODO: Move to shared layout
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body class="mx-auto max-w-lg md:max-w-xl lg:max-w-2xl mb-64 px-6 bg-background text-primary">
-		<main class="mt-12">
-			<h1 class="text-3xl font-bold w-full mb-10">Satej Bidvai</h1>
-			<section class="space-y-6">
-				<!-- <div class="space-y-4">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>Satej Bidvai</title>
+    <meta name="title" content="Satej Bidvai" />
+    <meta name="description" content="Portfolio of Satej Bidvai" />
+    <meta name="author" content="Satej Bidvai" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://satejbidvai.com/" />
+    <meta property="og:title" content="Satej Bidvai" />
+    <meta property="og:description" content="Portfolio of Satej Bidvai" />
+    <meta property="og:image" content="https://satejbidvai.com/favicon.ico" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://satejbidvai.com/" />
+    <meta name="twitter:title" content="Satej Bidvai" />
+    <meta name="twitter:description" content="Portfolio of Satej Bidvai" />
+    <meta name="twitter:image" content="https://satejbidvai.com/favicon.ico" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#09090B" />
+  </head>
+  <body class="mx-auto max-w-lg md:max-w-xl lg:max-w-2xl mb-64 px-6 bg-background text-primary">
+    <main class="mt-12">
+      <h1 class="text-3xl font-bold w-full mb-10">Satej Bidvai</h1>
+      <section class="space-y-6">
+        <!-- <div class="space-y-4">
 					<h3 class="text-xl font-medium">Featured Projects</h3>
 					<div class="grid gap-4">
 						<article
@@ -32,30 +60,30 @@ import '../styles/global.css'; // TODO: Move to shared layout
 					</div>
 				</div> -->
 
-				<div class="space-y-4">
-					<h3 class="text-xl font-medium">Get in Touch</h3>
-					<div class="flex gap-4">
-						<a
-							href="https://github.com/satejbidvai"
-							class="opacity-75 hover:opacity-100 transition-opacity"
-							target="_blank"
-							rel="noopener noreferrer">GitHub</a
-						>
-						<a
-							href="https://www.linkedin.com/in/satej-bidvai/"
-							class="opacity-75 hover:opacity-100 transition-opacity"
-							target="_blank"
-							rel="noopener noreferrer">LinkedIn</a
-						>
-						<a
-							href="mailto:satej.bidvai+portfolio@gmail.com"
-							class="opacity-75 hover:opacity-100 transition-opacity"
-							target="_blank"
-							rel="noopener noreferrer">Email</a
-						>
-					</div>
-				</div>
-			</section>
-		</main>
-	</body>
+        <div class="space-y-4">
+          <h3 class="text-xl font-medium">Get in Touch</h3>
+          <div class="flex gap-4">
+            <a
+              href="https://github.com/satejbidvai"
+              class="opacity-75 hover:opacity-100 transition-opacity"
+              target="_blank"
+              rel="noopener noreferrer">GitHub</a
+            >
+            <a
+              href="https://www.linkedin.com/in/satej-bidvai/"
+              class="opacity-75 hover:opacity-100 transition-opacity"
+              target="_blank"
+              rel="noopener noreferrer">LinkedIn</a
+            >
+            <a
+              href="mailto:satej.bidvai+portfolio@gmail.com"
+              class="opacity-75 hover:opacity-100 transition-opacity"
+              target="_blank"
+              rel="noopener noreferrer">Email</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
