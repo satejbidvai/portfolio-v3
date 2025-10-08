@@ -44,20 +44,22 @@ import GetInTouch from '../components/home/get-in-touch.astro';
   </head>
   <body class="mx-auto max-w-lg md:max-w-xl lg:max-w-2xl mb-64 px-6 bg-background text-primary">
     <main class="mt-12">
-      <h1 class="text-3xl font-bold mb-2 leading-none">
+      <h1 class="text-3xl font-bold mb-2 leading-none fade-in fade-in-delay-1">
         <span class="bg-gradient-to-r from-primary via-primary/90 to-primary/85 bg-clip-text text-transparent"
           >Satej Bidvai</span
         >
       </h1>
-      <div class="w-14 h-px bg-primary/30 mb-3"></div>
+      <div class="w-14 h-px bg-primary/30 mb-3 fade-in fade-in-delay-1"></div>
 
-      <p class="text-primary/75 mb-6">Frontend Developer</p>
+      <p class="text-primary/75 mb-6 fade-in fade-in-delay-2">Frontend Developer</p>
 
-      <p class="text-primary leading-relaxed font-medium mb-8">
+      <p class="text-primary leading-relaxed font-medium mb-8 fade-in fade-in-delay-3">
         You think I've great attention to detail? No, I've <span class="italic">self-diagnosed</span> OCD.
       </p>
 
-      <ProfileInfo />
+      <div class="fade-in fade-in-delay-4">
+        <ProfileInfo />
+      </div>
 
       <!-- <div class="space-y-4">
         <h3 class="text-xl font-medium">Featured Projects</h3>
@@ -77,7 +79,7 @@ import GetInTouch from '../components/home/get-in-touch.astro';
         </div>
       </div> -->
 
-      <div class="mt-12">
+      <div class="mt-12 fade-in fade-in-delay-5">
         <GetInTouch />
       </div>
     </main>
