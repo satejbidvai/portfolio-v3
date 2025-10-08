@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
+/* Fallback font with adjusted metrics to match Geist — This is done to reduce the layout shift due to different fonts*/
+@font-face {
+  font-family: 'Geist Fallback';
+  src: local('system-ui');
+  size-adjust: 101.5%;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
 
 @theme {
   --color-background: #09090B;
   --color-primary: #F9F9F9;
+
+  --font-sans: 'Geist Variable', 'Geist Fallback', system-ui, -apple-system, sans-serif;
 }
