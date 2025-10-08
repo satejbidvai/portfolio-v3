@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css'; // TODO: Move to shared layout
+import ProfileInfo from '../components/home/profile-info.astro';
+import GetInTouch from '../components/home/get-in-touch.astro';
 ---
 
 <html lang="en">
@@ -40,50 +42,42 @@ import '../styles/global.css'; // TODO: Move to shared layout
   </head>
   <body class="mx-auto max-w-lg md:max-w-xl lg:max-w-2xl mb-64 px-6 bg-background text-primary">
     <main class="mt-12">
-      <h1 class="text-3xl font-bold w-full mb-10">Satej Bidvai</h1>
-      <section class="space-y-6">
-        <!-- <div class="space-y-4">
-					<h3 class="text-xl font-medium">Featured Projects</h3>
-					<div class="grid gap-4">
-						<article
-							class="p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
-						>
-							<h4 class="font-medium">Project One</h4>
-							<p class="opacity-75">A brief description of your first featured project.</p>
-						</article>
-						<article
-							class="p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
-						>
-							<h4 class="font-medium">Project Two</h4>
-							<p class="opacity-75">A brief description of your second featured project.</p>
-						</article>
-					</div>
-				</div> -->
+      <h1 class="text-3xl font-bold mb-2 leading-none">
+        <span class="bg-gradient-to-r from-primary via-primary/90 to-primary/85 bg-clip-text text-transparent"
+          >Satej Bidvai</span
+        >
+      </h1>
+      <div class="w-14 h-px bg-primary/30 mb-3"></div>
 
-        <div class="space-y-4">
-          <h3 class="text-xl font-medium">Get in Touch</h3>
-          <div class="flex gap-4">
-            <a
-              href="https://github.com/satejbidvai"
-              class="opacity-75 hover:opacity-100 transition-opacity"
-              target="_blank"
-              rel="noopener noreferrer">GitHub</a
-            >
-            <a
-              href="https://www.linkedin.com/in/satej-bidvai/"
-              class="opacity-75 hover:opacity-100 transition-opacity"
-              target="_blank"
-              rel="noopener noreferrer">LinkedIn</a
-            >
-            <a
-              href="mailto:satej.bidvai+portfolio@gmail.com"
-              class="opacity-75 hover:opacity-100 transition-opacity"
-              target="_blank"
-              rel="noopener noreferrer">Email</a
-            >
-          </div>
+      <p class="text-primary/75 mb-6">Frontend Developer</p>
+
+      <p class="text-primary leading-relaxed font-medium mb-8">
+        You think I've great attention to detail? No, I've <span class="italic">self-diagnosed</span> OCD.
+      </p>
+
+      <ProfileInfo />
+
+      <!-- <div class="space-y-4">
+        <h3 class="text-xl font-medium">Featured Projects</h3>
+        <div class="grid gap-4">
+          <article
+            class="p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
+          >
+            <h4 class="font-medium">Project One</h4>
+            <p class="opacity-75">A brief description of your first featured project.</p>
+          </article>
+          <article
+            class="p-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-colors"
+          >
+            <h4 class="font-medium">Project Two</h4>
+            <p class="opacity-75">A brief description of your second featured project.</p>
+          </article>
         </div>
-      </section>
+      </div> -->
+
+      <div class="mt-12">
+        <GetInTouch />
+      </div>
     </main>
   </body>
 </html>
