@@ -11,10 +11,24 @@
 }
 
 @theme {
-  --color-background: #09090B;
-  --color-primary: #F9F9F9;
+  /* Base colors - always paired */
+  --color-background: rgb(9 9 11);
+  --color-foreground: rgb(249 249 249);
 
-  --font-sans: 'Geist Variable', 'Geist Fallback', system-ui, -apple-system, sans-serif;
+  /* Muted - for secondary/de-emphasized content */
+  --color-muted-foreground: rgb(249 249 249 / 0.7);
+
+  /* Accent - for emphasized content */
+  --color-accent-foreground: rgb(249 249 249 / 0.9);
+
+  /* Border - for borders, dividers, decorations */
+  --color-border: rgb(249 249 249 / 0.3);
+
+  /* Ring - for focus states */
+  --color-ring: rgb(249 249 249 / 0.5);
+
+  /* Font family */
+  --font-family-sans: 'Geist Variable', 'Geist Fallback', system-ui, -apple-system, sans-serif;
 }
 
 @keyframes fadeInUp {
