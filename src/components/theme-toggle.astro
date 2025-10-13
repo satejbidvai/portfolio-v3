@@ -1,0 +1,83 @@
+---
+
+---
+
+<button
+  id="rotating-toggle"
+  class="relative p-3 -mt-2 rounded-lg transition-opacity hover:opacity-70"
+  aria-label="Toggle theme"
+>
+  <div class="relative w-full h-full flex items-center justify-center">
+    <svg
+      class="sun-icon w-5 h-5 text-foreground transition-[transform,opacity] duration-300 ease-out"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <circle cx="12" cy="12" r="4"></circle>
+      <path
+        d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+      ></path>
+    </svg>
+    <svg
+      class="moon-icon w-5 h-5 text-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-[transform,opacity] duration-300 ease-out"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </div>
+</button>
+
+<style>
+  .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  .moon-icon {
+    opacity: 0;
+    transform: rotate(-180deg);
+  }
+  :global(.dark) .sun-icon {
+    opacity: 0;
+    transform: rotate(180deg);
+  }
+  :global(.dark) .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+</style>
+
+<script>
+  const button = document.getElementById('rotating-toggle');
+
+  button?.addEventListener('click', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // If user prefers reduced motion or View Transitions API is not supported
+    if (prefersReducedMotion || !document.startViewTransition) {
+      document.documentElement.classList.toggle('dark');
+      return;
+    }
+
+    // Get button position for animation origin
+    const rect = button.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    // Calculate the maximum radius needed
+    const endRadius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+    const transition = document.startViewTransition(() => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`] },
+        { duration: 500, easing: 'ease-in-out', pseudoElement: '::view-transition-new(root)' }
+      );
+    });
+  });
+</script>
