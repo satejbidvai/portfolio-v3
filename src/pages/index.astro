@@ -52,13 +52,22 @@ import ThemeToggle from '../components/theme-toggle.astro';
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       };
 
+      const updateThemeColor = (isDark) => {
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', isDark ? '#09090B' : '#FFFFFF');
+      };
+
       const isDark = getThemePreference() === 'dark';
       document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+      updateThemeColor(isDark);
 
       if (typeof localStorage !== 'undefined') {
         const observer = new MutationObserver(() => {
           const isDark = document.documentElement.classList.contains('dark');
           localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+          // Delay to sync with theme toggle animation
+          setTimeout(() => updateThemeColor(isDark), 75);
         });
         observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
       }
