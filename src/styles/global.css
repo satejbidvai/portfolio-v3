@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "./theme.css";
+@import "./animations.css";
+
 /* Fallback font with adjusted metrics to match Geist — This is done to reduce the layout shift due to different fonts*/
 @font-face {
   font-family: 'Geist Fallback';
@@ -12,78 +15,4 @@
 
 @theme {
   --font-family-sans: 'Geist Variable', 'Geist Fallback', system-ui, -apple-system, sans-serif;
-
-  /* Light theme */
-  --color-background: rgb(255 255 255);
-  --color-foreground: rgb(9 9 11);
-  --color-muted-foreground: rgb(9 9 11 / 0.6);
-  --color-accent-foreground: rgb(9 9 11 / 0.85);
-  --color-border: rgb(9 9 11 / 0.15);
-  --color-ring: rgb(9 9 11 / 0.2);
-
-}
-
-/* Dark theme */
-.dark {
-  --color-background: rgb(9 9 11);
-  --color-foreground: rgb(249 249 249);
-  --color-muted-foreground: rgb(249 249 249 / 0.7);
-  --color-accent-foreground: rgb(249 249 249 / 0.9);
-  --color-border: rgb(249 249 249 / 0.3);
-  --color-ring: rgb(249 249 249 / 0.5);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  animation: fadeInUp 0.5s ease-in-out forwards;
-  opacity: 0;
-}
-
-.fade-in-delay-1 {
-  animation-delay: 0.08s;
-}
-
-.fade-in-delay-2 {
-  animation-delay: 0.16s;
-}
-
-.fade-in-delay-3 {
-  animation-delay: 0.24s;
-}
-
-.fade-in-delay-4 {
-  animation-delay: 0.32s;
-}
-
-.fade-in-delay-5 {
-  animation-delay: 0.4s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .fade-in {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-:root {
-  /* Theme transition */
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Ensure clip-path overlays work correctly for theme transition*/
-body {
-  position: relative;
-  isolation: isolate;
 }

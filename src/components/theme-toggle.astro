@@ -9,7 +9,7 @@
 >
   <div class="relative w-full h-full flex items-center justify-center">
     <svg
-      class="sun-icon w-5 h-5 text-foreground transition-[transform,opacity] duration-300 ease-out"
+      class="sun-icon rotate-0 dark:rotate-180 opacity-100 dark:opacity-0 w-5 h-5 text-foreground transition-all duration-300 ease-out"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -20,7 +20,7 @@
       ></path>
     </svg>
     <svg
-      class="moon-icon w-5 h-5 text-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-[transform,opacity] duration-300 ease-out"
+      class="moon-icon -rotate-180 dark:rotate-0 opacity-0 dark:opacity-100 w-5 h-5 text-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -29,25 +29,6 @@
     </svg>
   </div>
 </button>
-
-<style>
-  .sun-icon {
-    opacity: 1;
-    transform: rotate(0deg);
-  }
-  .moon-icon {
-    opacity: 0;
-    transform: rotate(-180deg);
-  }
-  :global(.dark) .sun-icon {
-    opacity: 0;
-    transform: rotate(180deg);
-  }
-  :global(.dark) .moon-icon {
-    opacity: 1;
-    transform: rotate(0deg);
-  }
-</style>
 
 <script>
   const button = document.getElementById('rotating-toggle');
