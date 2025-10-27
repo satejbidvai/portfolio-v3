@@ -12,6 +12,7 @@
 		"@astrojs/check": "^0.9.4",
 		"@fontsource-variable/geist": "^5.2.8",
 		"@tailwindcss/vite": "^4.1.14",
+		"@vercel/analytics": "^1.5.0",
 		"astro": "^5.14.1",
 		"tailwindcss": "^4.1.14",
 		"typescript": "^5.9.3"

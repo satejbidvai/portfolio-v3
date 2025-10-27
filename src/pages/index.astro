@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css'; // TODO: Move to shared layout
+
 import '@fontsource-variable/geist';
+import Analytics from '@vercel/analytics/astro';
 
 import ProfileInfo from '../components/home/profile-info.astro';
 import Quote from '../components/home/quote.astro';
@@ -129,5 +131,7 @@ import ThemeToggle from '../components/theme-toggle.astro';
         <GetInTouch />
       </div>
     </main>
+
+    <Analytics />
   </body>
 </html>
