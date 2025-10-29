@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { BlogPosting, Person, WebPage, WithContext } from 'schema-dts';
+
+interface Props {
+  post: CollectionEntry<'blog'>['data'];
+  url: string;
+}
+
+const { post, url } = Astro.props;
+
+const siteURL = Astro.site!.toString();
+const fullURL = `${siteURL}${url}`;
+
+const structuredData: WithContext<BlogPosting> = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.description,
+  image: post.ogImage,
+  datePublished: post.publishDate.toISOString(),
+  dateModified: post.publishDate.toISOString(),
+  author: { '@type': 'Person', name: 'Satej Bidvai', url: siteURL },
+  publisher: { '@type': 'Person', name: 'Satej Bidvai', url: siteURL },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': fullURL },
+  url: fullURL
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />

@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+import '@fontsource-variable/geist';
+import Analytics from '@vercel/analytics/astro';
+import SiteHeader from '../components/site-header.astro';
+import Head from '../components/head.astro';
+import type { ComponentProps } from 'astro/types';
+
+interface Props extends ComponentProps<typeof Head> {}
+---
+
+<html lang="en">
+  <head>
+    <Head {...Astro.props} />
+    <slot name="head" />
+  </head>
+
+  <body class="mx-auto md:max-w-3xl pb-16 md:pb-20 px-6 bg-background text-foreground">
+    <main class="mt-8 md:mt-12">
+      <SiteHeader />
+
+      <slot />
+    </main>
+
+    <Analytics />
+  </body>
+</html>
