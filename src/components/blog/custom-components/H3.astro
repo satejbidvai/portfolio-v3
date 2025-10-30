@@ -1,0 +1,11 @@
+---
+import LinkToID from './LinkToID.astro';
+
+const { id } = Astro.props;
+---
+
+<h3 id={id} class="heading group">
+  <LinkToID href={`#${id}`}>
+    <slot />
+  </LinkToID>
+</h3>
