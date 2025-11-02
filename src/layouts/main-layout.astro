@@ -19,7 +19,9 @@ interface Props extends ComponentProps<typeof Head> {}
     <main class="mt-8 md:mt-12">
       <SiteHeader />
 
-      <slot />
+      <div class="fade-in fade-in-delay-1">
+        <slot />
+      </div>
     </main>
 
     <Analytics />
