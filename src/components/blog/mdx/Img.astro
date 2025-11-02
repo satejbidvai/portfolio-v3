@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import type { LocalImageProps } from 'astro:assets';
+import type { RemoteImageProps } from 'astro:assets';
+
+type Props = LocalImageProps | RemoteImageProps;
+const props = Astro.props;
+
+const isRemoteImage = (props: Props): props is RemoteImageProps => {
+  return typeof props.src === 'string';
+};
+---
+
+<div class="relative">
+  <div class="rounded-xl overflow-clip">
+    {
+      isRemoteImage(props) ? (
+        <Image {...props} width={props.width ?? 100} height={props.height ?? 100} />
+      ) : (
+        <Image {...props} />
+      )
+    }
+  </div>
+  <div class="pointer-events-none absolute inset-0 rounded-xl border border-border/30"></div>
+</div>
