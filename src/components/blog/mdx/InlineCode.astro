@@ -1,0 +1,11 @@
+---
+import Code from './Code.astro';
+
+interface Props {
+  pattern: string;
+}
+
+const { pattern } = Astro.props;
+---
+
+<Code>{pattern}</Code>

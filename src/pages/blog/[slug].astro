@@ -8,6 +8,7 @@ import H3 from '../../components/blog/mdx/H3.astro';
 import A from '../../components/blog/mdx/A.astro';
 import Img from '../../components/blog/mdx/Img.astro';
 import Code from '../../components/blog/mdx/Code.astro';
+import InlineCode from '../../components/blog/mdx/InlineCode.astro';
 import Link from '../../components/ui/Link.astro';
 
 export async function getStaticPaths() {
@@ -15,7 +16,7 @@ export async function getStaticPaths() {
   return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
 }
 
-const MDX_COMPONENTS = { h2: H2, h3: H3, a: A, img: Img, code: Code } as const;
+const MDX_COMPONENTS = { h2: H2, h3: H3, a: A, img: Img, code: Code, InlineCode } as const;
 
 const { post } = Astro.props;
 const postUrl = getPostUrl(post.slug);
