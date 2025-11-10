@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getPostUrl } from '../../utils/blog';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+---
+
+<article>
+  <a
+    href={getPostUrl(post.slug)}
+    class="flex items-center gap-6 px-4 py-3 rounded-lg border border-border/30 hover:border-border/60 hover:bg-background/50 transition-all group"
+  >
+    <h2 class="text-lg font-semibold group-hover:text-foreground/80 transition-colors flex-1">
+      {post.data.title}
+    </h2>
+    <time
+      datetime={post.data.publishDate.toISOString()}
+      class="shrink-0 text-xs text-muted-foreground bg-border/20 px-2.5 py-1 rounded whitespace-nowrap"
+    >
+      {post.data.publishDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+    </time>
+  </a>
+</article>
