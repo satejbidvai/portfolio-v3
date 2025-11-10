@@ -1,18 +1,22 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getPostUrl } from '../../utils/blog';
+import type {} from 'astro:prefetch';
+import type { AstroUserConfig } from 'astro';
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  prefetch?: 'tap' | 'hover' | 'viewport' | 'load';
 }
 
-const { post } = Astro.props;
+const { post, prefetch = 'hover' } = Astro.props;
 ---
 
 <article>
   <a
     href={getPostUrl(post.slug)}
     class="flex items-center gap-6 px-4 py-3 rounded-lg border border-border/40 hover:border-border/60 hover:bg-background/50 transition-all group"
+    data-astro-prefetch={prefetch}
   >
     <h2 class="text-lg font-medium group-hover:text-foreground/80 transition-colors flex-1">
       {post.data.title}

@@ -34,7 +34,7 @@ const recentPosts = allPosts.slice(0, 3);
         </h2>
         <div class="space-y-3">
           {recentPosts.map((post) => (
-            <BlogCard post={post} />
+            <BlogCard post={post} prefetch="load" />
           ))}
         </div>
         {allPosts.length > 3 && (
