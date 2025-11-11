@@ -12,7 +12,12 @@ While working on a task today, I had to populate my array of objects using my da
 Instinctively, I used the `map` function. The code looked something like this:
 
 ```javascript
-const dataList = [{ type: 'test__1' }, { type: 'test__2' }, { type: 'test__3' }, { type: 'test__4' }];
+const dataList = [
+  { type: 'test__1' }, 
+  { type: 'test__2' },
+  { type: 'test__3' },
+  { type: 'test__4' }
+];
 
 const modifiedList = dataList.map(async (item) => {
   // Get additional properties from DB
