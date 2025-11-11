@@ -1,0 +1,49 @@
+---
+title: 'Using async/await with array.map()'
+description: 'Learn how to use async/await with array.map()'
+publishDate: 2023-01-12
+draft: false
+ogImage: '/og/using-async-await-with-arr-map.png'
+canonicalURL: 'https://dev.to/satejbidvai/using-async-await-with-arrmap-587f'
+---
+
+While working on a task today, I had to populate my array of objects using my database.
+
+Instinctively, I used the `map` function. The code looked something like this:
+
+```javascript
+const dataList = [{ type: 'test__1' }, { type: 'test__2' }, { type: 'test__3' }, { type: 'test__4' }];
+
+const modifiedList = dataList.map(async (item) => {
+  // Get additional properties from DB
+  const dataFromDB = await DataModel.findOne({
+    type: item.type
+  });
+
+  return { ...item, dataFromDB };
+});
+```
+
+## Did you spot the error?
+
+- In `dataList.map()`, we are returning an array of promises and not an array.
+- Hence, the `modifiedList` will look something like this:
+
+![console.log(modifiedList)](images/using-async-await-with-arr-map/modified-list.webp)
+
+## The Solution
+
+Simple! We just need to wrap our function with `await Promise.all` so that our array of promises is resolved to the desired `modifiedList` .
+
+```javascript
+const modifiedList = await Promise.all(
+    dataList.map(async (item) => {
+        // Get additional properties from DB
+        const dataFromDB = await DataModel.findOne({
+            type: item.type
+        });
+
+        return { ...item, dataFromDB };
+    });
+);
+```
