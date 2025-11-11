@@ -12,8 +12,9 @@ interface Props {
 
 const { title, description, url, ogImage } = Astro.props;
 
-const siteURL = Astro.site!.toString();
+const siteURL = Astro.site!.toString().slice(0, -1); // Remove trailing slash
 const fullURL = `${siteURL}${url}`;
+const ogImageURL = `${siteURL}${ogImage}`;
 ---
 
 <meta charset="utf-8" />
@@ -41,7 +42,7 @@ const fullURL = `${siteURL}${url}`;
 <meta property="og:url" content={fullURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:image" content={ogImageURL} />
 <meta property="og:image:alt" content={description} />
 
 <!-- Twitter -->
@@ -49,7 +50,7 @@ const fullURL = `${siteURL}${url}`;
 <meta name="twitter:url" content={fullURL} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image" content={ogImageURL} />
 
 <!-- Theme Color -->
 <meta name="theme-color" content="#09090B" />
