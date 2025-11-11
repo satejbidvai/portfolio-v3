@@ -1,0 +1,250 @@
+---
+title: 'JavaScript for Interviews'
+description: 'These are my notes which I prepared to revise for JavaScript interviews. Some of the topics are advanced but are a must-know for a intermediate JavaScript developer.'
+publishDate: 2022-12-07
+draft: false
+ogImage: '/og/javascript-for-interviews.png'
+canonicalURL: 'https://dev.to/satejbidvai/javascript-for-interviews-4k6e'
+---
+
+## 💪 Basics
+
+#### JavaScript is a dynamically typed language
+
+Data type of variables can be changed during runtime
+
+```jsx
+var justAVariable = 10;
+justAVariable = 'I am a string now';
+
+/* Does not throw any error */
+```
+
+#### Variables
+
+|       | Scope      | Can be updated? | Can be redeclared? |
+| ----- | ---------- | --------------- | ------------------ |
+| var   | FUNCTIONAL | YES             | YES                |
+| let   | BLOCK      | YES             | NO                 |
+| const | BLOCK      | NO              | NO                 |
+
+#### Data Types
+
+1. **Primitive Values**
+
+   Boolean, String, Number, BigInt, Symbol, Null, Undefined
+
+2. **Objects**
+
+   Everything except primitives are of type Object in JS.
+
+#### == v/s ===
+
+- `==` checks only for **value** (type coersion may occur)
+- `===` checks for both **value** and **type** (no type coersion)
+
+#### Spread Operator
+
+- Spreads an array into elements.
+- Spreads an object into key value pairs.
+
+  ```jsx
+  const arr = [1, 2, 3];
+  const copyArr = [...arr]; // copyArr = [1, 2, 3]
+
+  const sum = (a, b, c) => a + b + c;
+  sum(...arr); // Equivalent to sum(1, 2, 3)
+
+  const obj = { x: 10 };
+  const copyObj = { ...obj }; // copyObj = { x: 10 }
+  ```
+
+#### Rest Parameter
+
+- Condense elements into an array.
+- Function can be called using variable no. of arguments.
+
+  ```jsx
+  const condense = (...params) => {
+    return params;
+  };
+
+  console.log(condense(1, 2, 3, 4)); // prints [1, 2, 3, 4]
+  console.log(condense(1, 2)); // prints [1, 2]
+  ```
+
+## 🫡 Array Methods
+
+#### map() method
+
+`arr.map((element, index, array) ⇒ { /* Modify element */ })`
+
+```jsx
+/* returns a new array with modified elements */
+
+const numbers = [1, 2, 3, 4];
+const double = numbers.map((ele) => ele * 2); // [2, 4, 6, 8]
+```
+
+#### filter() method
+
+`arr.filter((element, index, array) ⇒ { /* Condition */ })`
+
+```jsx
+/* returns a new array whose elements satisfy the condition */
+
+const numbers = [1, 2, 3, 4];
+const evenNumbers = numbers.filter((ele) => ele % 2 == 0); // [2, 4]
+```
+
+#### find() method
+
+`arr.find((element, index, array) ⇒ { /* Condition */ })`
+
+```jsx
+/* returns the first element satisfying the condition */
+
+const numbers = [1, 2, 3, 4];
+const greaterThanTwo = numbers.find((ele) => ele > 2); // 3
+```
+
+#### reduce() method
+
+`arr.reduce((prevEle, currEle, currIndex, array) ⇒ { /* Code */ }, initialVal)`
+
+```jsx
+/* returns a single value - the accumulated result of calling the callback function on each element */
+
+const numbers = [1, 2, 3, 4];
+const sum = numbers.reduce((prev, curr) => prev + curr, 0); // 10
+```
+
+## ☝️ Hoisting
+
+Function, variable and class declarations are moved to the top of the scope.
+
+#### Variable Hoisting
+
+- `var` is hoisted and initialized with `undefined`.
+  ```jsx
+  console.log(a); // prints "undefined"
+  var a = 10;
+  ```
+- `let` and `const` are hoisted, but not initialized.
+  ```jsx
+  console.log(b); // ReferenceError: b is not defined
+  let b = 20;
+  ```
+- No hoisting for variables that are not declared.
+  ```jsx
+  console.log(c); // ReferenceError: c is not defined
+  c = 30;
+  ```
+
+#### Function Hoisting
+
+Function declarations are hoisted. **(! Arrow functions are not hoisted)**
+
+```jsx
+helloWorld(); // Works
+
+function helloWorld() {
+  console.log('Hello World');
+}
+```
+
+#### Class Hoisting
+
+- Class declarations are hoisted, but not initialised.
+
+<aside>
+⚠️ Function and Class expressions are not hoisted.
+
+</aside>
+
+## 🤝 Closure
+
+- A function and it’s lexical scope together form a closure.
+- Due to closures, we can access the outer scope of our function.
+- If we return a function, it stores the reference to variables and functions in the outer scope even after the outer function is executed.
+
+  ```jsx
+  function outerFunc() {
+    let str = 'Hello World';
+    return () => console.log(str);
+  }
+
+  const testClosure = outerFunc();
+  testClosure(); // prints "Hello World"
+
+  /* The returned function still remembers the value of str" */
+  ```
+
+- **NOTE:** Only a reference to the variables is stored and not the actual value. So, if you mutate the variable before calling the returned function, it will reflect the updated value.
+
+  ```jsx
+  let arr = [];
+  function outerFunc() {
+    arr.push(1);
+    return () => console.log(arr);
+  }
+
+  const testClosure = outerFunc();
+  arr.push(2);
+  testClosure(); // prints [2, 1]
+  ```
+
+## 😮‍💨 IIFE (Immediately Invoked Function Expression)
+
+- Do not have a name ⇒ **Anonymous** **function**
+- Executed just after it is defined.
+
+  ```jsx
+  /* Syntax */
+
+  ( **function(){}** )();
+  ( **function(){}**() );
+  ( **() => {}** )();
+  !**function(){}**();
+  +**function(){}**();
+  -**function(){}**();
+  ```
+
+- Used for keeping data private and exposing selected functions.
+
+  ```jsx
+  const iife = (() => {
+    let val = 0;
+    return {
+      getVal: () => val,
+      setVal: (n) => {
+        val = n;
+      }
+    };
+  })();
+
+  iife.setVal(10);
+  console.log(iife.getVal());
+  ```
+
+## 👩‍👦 Prototypal Inheritance
+
+- All objects inherit properties with the help of the prototype object.
+  eg. Arrays inherit from Array prototype
+- The prototype object has a prototype of it’s own. This forms a prototype chain with the last object being null.
+- The prototype object: `__proto__`
+- When we try to access something in an object, it first checks the object, then in it’s prototype, then in the prototype’s prototype, etc.
+
+  ```jsx
+  const arr = [];
+
+  arr.push(1); // We can acces this due to the arr.__proto__.push() method
+  ```
+
+## 👌 Event Loop
+
+A writeup will take too much time to explain 😅
+
+**Checkout this video:**
+
+[What the heck is the event loop anyway? | Philip Roberts | JSConf EU](https://youtu.be/8aGhZQkoFbQ)
