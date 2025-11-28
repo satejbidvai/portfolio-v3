@@ -6,10 +6,12 @@ interface Props {
 const { href } = Astro.props;
 ---
 
-<a href={href} class="no-prose relative inline-flex items-center gap-2 no-underline">
-  <slot />
+<a href={href} class="no-prose inline-flex items-center gap-1.5 no-underline">
+  <span>
+    <slot />
+  </span>
   <svg
-    class="size-4.5 opacity-0 group-hover:opacity-80 transition-opacity text-muted-foreground group-hover:text-foreground ml-1"
+    class="size-4.5 opacity-0 group-hover:opacity-80 transition-opacity text-muted-foreground group-hover:text-foreground shrink-0"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
