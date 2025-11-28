@@ -1,0 +1,113 @@
+---
+title: 'How to ensure unique IDs in React with useId'
+description: 'Learn how to ensure unique IDs in React with useId.'
+publishDate: 2025-11-28
+draft: false
+ogImage: '/og/ensure-unique-ids-with-useid-react.png'
+---
+
+I always thought that `useId` was _just another React hook_ that I can ignore and still live my life peacefully. Until… well this happened:
+
+## The "weird" Problem
+
+**I ran into a strange issue: clicking a label was focusing the wrong input**
+
+![1-clicking-shipping-focuses-billing.png](images/ensure-unique-ids-with-useid-react/1-clicking-shipping-focuses-billing.png)
+
+<small class="-mt-7 block ml-auto text-center">
+  _(Picture credits to [Nano Banana](https://gemini.google/in/overview/image-generation/?hl=en-IN) 🍌)_
+</small>
+
+The problem was that both the inputs were using the same IDs:
+
+```tsx
+// File: billing-info.tsx
+const BillingInfo = () => {
+  return (
+    <>
+      <label htmlFor="billing-email"> Email Address </label>
+      <input id="billing-email" />
+      <label htmlFor="confirm-email"> Confirm Email </label>
+      <input id="confirm-email" />
+    </>
+  );
+};
+
+// File: shipping-details.tsx
+const ShippingDetails = () => {
+  return (
+    <>
+      <label htmlFor="shipping-email"> Email Address </label>
+      <input id="shipping-email" />
+      <label htmlFor="confirm-email"> Confirm Email </label>
+      <input id="confirm-email" />
+    </>
+  );
+};
+```
+
+[In HTML, IDs _need_ to be unique](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id) within a page. So it is not the browser at fault here.
+
+Even if we use a prefix when assigning IDs — `billing__confirm-email` , `shipping__confirm-email` there is no way to ensure that there are no collisions.
+
+Prefixing works in small codebases, but it does not scale in large teams because we humans are inconsistent. Two teams can still accidentally pick the same prefix without realizing it.
+
+Then what is the correct way?
+
+(No, _manually searching the codebase every time you assign an ID_ is not an option 🙂)
+
+## The Solution: Ensure unique IDs (without any _hacks)_
+
+This is a perfect use-case for React's `useId`.
+
+It is very simple to use and solves our problem as well.
+
+```tsx
+// File: billing-info.tsx
+const BillingInfo = () => {
+  const billingId = useId();
+  return (
+    <>
+      <label htmlFor={`${billingId}-email`}> Email Address </label>
+      <input id={`${billingId}-email`} />
+      <label htmlFor={`${billingId}-confirm-email`}> Confirm Email </label>
+      <input id={`${billingId}-confirm-email`} />
+    </>
+  );
+};
+
+// File: shipping-details.tsx
+const ShippingDetails = () => {
+  const shippingId = useId();
+  return (
+    <>
+      <label htmlFor={`${shippingId}-email`}> Email Address </label>
+      <input id={`${shippingId}-email`} />
+      <label htmlFor={`${shippingId}-confirm-email`}> Confirm Email </label>
+      <input id={`${shippingId}-confirm-email`} />
+    </>
+  );
+};
+```
+
+### How is this different than manually prefixing IDs?
+
+Internally, the ID is generated from the component's position in the React tree.
+
+This ensures three things:
+
+1. **Globally unique IDs**<br/>
+   As each component has a unique position in the tree, the ID corresponding to that position becomes unique; ensuring that there are no collisions.
+
+2. **Stable IDs during [server rendering](https://www.greatfrontend.com/questions/quiz/explain-what-react-hydration-is)**<br/>
+   React uses a prefixing scheme that is derived from the tree structure. As the tree is same on the server and client, both produce the exact same ID and avoid hydration mismatches.
+
+3. **Stable IDs across re-renders**<br/>
+   A given component returns the same string for the lifetime of that component's instance. ([Changing IDs confuse screen readers](https://www.epicreact.dev/improving-react-accessibility-with-use-id))
+
+**NOTE:** Do not use `useId()` for keys in dynamic lists. Because adding/removing items changes the component tree structure, the ID also changes which can cause bugs.
+
+## Further reading:
+
+- [react.dev/reference/react/useId](https://react.dev/reference/react/useId) (Official docs)
+- [jser.dev/2023-04-25-how-does-useid-work](https://jser.dev/2023-04-25-how-does-useid-work/) (React Internals Deep Dive)

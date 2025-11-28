@@ -41,7 +41,7 @@ const { Content } = await post.render();
       <Link href="/blog" class="text-sm inline-flex items-center gap-1"> ← Back to Blog </Link>
     </nav>
     <header class="mb-8">
-      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4 text-balance">{post.data.title}</h1>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4 text-pretty">{post.data.title}</h1>
       <div class="flex items-center gap-4 text-muted-foreground text-sm">
         <time datetime={post.data.publishDate.toISOString()}>
           {post.data.publishDate.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
