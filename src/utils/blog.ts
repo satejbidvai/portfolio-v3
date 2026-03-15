@@ -15,7 +15,7 @@ export const getAllPosts = async (): Promise<CollectionEntry<'blog'>[]> => {
 
 export const getPostBySlug = async (slug: string): Promise<CollectionEntry<'blog'> | undefined> => {
   const posts = await getAllPosts();
-  return posts.find((post) => post.slug === slug);
+  return posts.find((post) => post.id === slug);
 };
 
 export const getPostsByTag = async (tag: string): Promise<CollectionEntry<'blog'>[]> => {
