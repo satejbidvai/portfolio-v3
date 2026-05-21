@@ -1,0 +1,70 @@
+---
+interface Props {
+  term: string;
+}
+
+const { term } = Astro.props;
+const uid = Math.random().toString(36).slice(2, 10);
+const popoverId = `hint-${uid}`;
+const anchorName = `--hint-${uid}`;
+---
+
+<button
+  type="button"
+  popovertarget={popoverId}
+  aria-describedby={popoverId}
+  style={`anchor-name: ${anchorName};`}
+  class="inline m-0 p-0 bg-transparent border-none [font:inherit] text-inherit underline decoration-dotted decoration-border underline-offset-[3px] decoration-1 cursor-help transition-[text-decoration-color] duration-150 ease-out hover:decoration-foreground aria-expanded:decoration-foreground focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2"
+  >{term}</button
+><span
+  id={popoverId}
+  popover="auto"
+  style={`position-anchor: ${anchorName};`}
+  class="hint-popover m-0 mt-1.5 px-3 py-2.5 border border-border bg-background text-muted-foreground text-sm leading-[1.55] rounded-md max-w-[min(22rem,calc(100vw-2rem))]"
+  ><slot /></span
+>
+
+<style>
+  .hint-popover {
+    inset: unset;
+    position-area: bottom;
+    position-try-fallbacks:
+      flip-block,
+      flip-inline,
+      flip-block flip-inline;
+    opacity: 0;
+    translate: 0 4px;
+    transition:
+      opacity 120ms ease-out,
+      translate 120ms ease-out,
+      overlay 120ms ease-out allow-discrete,
+      display 120ms ease-out allow-discrete;
+  }
+
+  .hint-popover:popover-open {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  @starting-style {
+    .hint-popover:popover-open {
+      opacity: 0;
+      translate: 0 4px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hint-popover {
+      transition:
+        overlay 0s allow-discrete,
+        display 0s allow-discrete;
+      translate: none;
+    }
+    @starting-style {
+      .hint-popover:popover-open {
+        opacity: 1;
+        translate: none;
+      }
+    }
+  }
+</style>
