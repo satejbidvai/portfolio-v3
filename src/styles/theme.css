@@ -20,6 +20,15 @@
   --color-ring: rgb(249 249 249 / 0.5);
 }
 
+/* Text selection */
+::selection {
+  background: rgb(9 9 11 / 0.15);
+}
+
+.dark ::selection {
+  background: rgb(249 249 249 / 0.2);
+}
+
 /* Theme transition */
 :root {
   transition: background-color 0.3s ease, color 0.3s ease;
