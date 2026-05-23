@@ -1,0 +1,58 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class="group relative">
+  <pre class={className} {...rest}><slot /></pre>
+  <button
+    class="group/btn absolute top-2 right-2 p-1.5 border-none rounded bg-white/8 text-white/40 cursor-pointer opacity-0 leading-none transition-[opacity,color,background] duration-150 group-hover:opacity-100 focus-visible:opacity-100 hover:text-white/80 hover:bg-white/12 data-copied:text-white/80 focus-visible:outline-1 focus-visible:outline-white/30 focus-visible:outline-offset-1 motion-reduce:transition-none"
+    aria-label="Copy code"
+  >
+    <svg
+      class="group-data-copied/btn:hidden"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+    </svg>
+    <svg
+      class="hidden group-data-copied/btn:block"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+  </button>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll<HTMLButtonElement>('[aria-label="Copy code"]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const code = btn.previousElementSibling?.querySelector('code');
+        if (!code) return;
+
+        try {
+          await navigator.clipboard.writeText(code.textContent);
+          btn.dataset.copied = '';
+          setTimeout(() => delete btn.dataset.copied, 1500);
+        } catch {
+          /* Clipboard API not available */
+        }
+      });
+    });
+  });
+</script>
