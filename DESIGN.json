@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-23T09:20:00.000Z",
+  "title": "Design System: Satej Bidvai",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "oklch(14.08% 0.004 285.82)",
+        "tonalRamp": [
+          "oklch(14.08% 0.004 285.82)",
+          "oklch(25% 0.004 285.82)",
+          "oklch(35% 0.003 285.82)",
+          "oklch(45% 0.003 285.82)",
+          "oklch(55% 0.003 285.82)",
+          "oklch(65% 0.002 285.82)",
+          "oklch(80% 0.002 285.82)",
+          "oklch(95% 0.001 285.82)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "oklch(14.08% 0.004 285.82)",
+          "oklch(25% 0.003 285.82)",
+          "oklch(40% 0.002 285.82)",
+          "oklch(55% 0.002 285.82)",
+          "oklch(70% 0.001 285.82)",
+          "oklch(85% 0.001 285.82)",
+          "oklch(95% 0 0)",
+          "oklch(100% 0 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Blog post titles. The largest element on any page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and blog card titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose paragraphs and homepage intro."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metadata, timestamps, navigation links."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "fade-in-up",
+        "value": "opacity 0→1, translateY 10px→0, 500ms ease-in-out",
+        "purpose": "Page entrance animation with staggered delays (80ms increments, up to 5 stages)."
+      },
+      {
+        "name": "theme-toggle-reveal",
+        "value": "clip-path circle expand, 500ms ease-in-out",
+        "purpose": "View Transitions circle animation originating from the theme toggle button."
+      },
+      {
+        "name": "icon-rotate",
+        "value": "rotate 0↔180deg, 300ms ease-out",
+        "purpose": "Sun/moon icon rotation during theme switch."
+      },
+      {
+        "name": "ease-standard",
+        "value": "ease-in-out",
+        "purpose": "Default easing for fade-in and structural transitions."
+      },
+      {
+        "name": "ease-interactive",
+        "value": "ease-out",
+        "purpose": "Easing for hover and icon state changes."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Blog Card",
+      "kind": "card",
+      "refersTo": "blog-card",
+      "description": "Post list item with title and date badge. Bordered row, not a visual card.",
+      "html": "<a class=\"ds-blog-card\" href=\"#\"><span class=\"ds-blog-card-title\">It's called a PR \"review\" for a reason</span><time class=\"ds-blog-card-date\">May 22, 2026</time></a>",
+      "css": ".ds-blog-card { display: flex; align-items: center; gap: 24px; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(9, 9, 11, 0.06); color: #09090b; text-decoration: none; transition: border-color 0.15s, background-color 0.15s; } .ds-blog-card:hover { border-color: rgba(9, 9, 11, 0.09); background-color: rgba(255, 255, 255, 0.5); } .ds-blog-card-title { font-family: 'Geist Variable', system-ui, sans-serif; font-size: 1.125rem; font-weight: 500; flex: 1; } .ds-blog-card:hover .ds-blog-card-title { color: rgba(9, 9, 11, 0.8); } .ds-blog-card-date { flex-shrink: 0; font-size: 0.75rem; color: rgba(9, 9, 11, 0.6); background: rgba(9, 9, 11, 0.03); width: 96px; text-align: center; padding: 4px 10px; border-radius: 4px; white-space: nowrap; }"
+    },
+    {
+      "name": "Muted Link",
+      "kind": "nav",
+      "refersTo": "link-muted",
+      "description": "Secondary navigation link. Muted at rest, full ink on hover.",
+      "html": "<a class=\"ds-link-muted\" href=\"#\">GitHub</a>",
+      "css": ".ds-link-muted { font-family: 'Geist Variable', system-ui, sans-serif; font-size: 0.875rem; color: rgba(9, 9, 11, 0.6); text-decoration: none; transition: color 0.15s; } .ds-link-muted:hover { color: #09090b; } .ds-link-muted:focus-visible { outline: 2px solid rgba(9, 9, 11, 0.2); outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Site Header",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Brand name as bold text link with theme toggle and a thin horizontal rule beneath.",
+      "html": "<div class=\"ds-site-header\"><div class=\"ds-site-header-row\"><a class=\"ds-site-header-brand\" href=\"/\">Satej Bidvai</a><button class=\"ds-theme-toggle\" aria-label=\"Toggle theme\"><svg class=\"ds-sun-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\" width=\"20\" height=\"20\"><circle cx=\"12\" cy=\"12\" r=\"4\"></circle><path d=\"M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41\"></path></svg></button></div><div class=\"ds-site-header-rule\"></div></div>",
+      "css": ".ds-site-header-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; } .ds-site-header-brand { font-family: 'Geist Variable', system-ui, sans-serif; font-size: 1.875rem; font-weight: 700; color: #09090b; text-decoration: none; line-height: 1; transition: opacity 0.15s; } .ds-site-header-brand:hover { opacity: 0.8; } .ds-theme-toggle { position: relative; padding: 12px; margin-top: -8px; border-radius: 8px; border: none; background: transparent; color: #09090b; cursor: pointer; transition: opacity 0.15s; } .ds-theme-toggle:hover { opacity: 0.7; } .ds-sun-icon { stroke-width: 2; } .ds-site-header-rule { width: 56px; height: 1px; background: rgba(9, 9, 11, 0.15); }"
+    },
+    {
+      "name": "Date Badge",
+      "kind": "chip",
+      "refersTo": "date-badge",
+      "description": "Compact timestamp badge used in blog card rows.",
+      "html": "<time class=\"ds-date-badge\">May 22, 2026</time>",
+      "css": ".ds-date-badge { font-family: 'Geist Variable', system-ui, sans-serif; font-size: 0.75rem; color: rgba(9, 9, 11, 0.6); background: rgba(9, 9, 11, 0.03); width: 96px; text-align: center; padding: 4px 10px; border-radius: 4px; white-space: nowrap; display: inline-block; }"
+    },
+    {
+      "name": "Prose Link",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "In-article external link with subtle underline that lightens on hover.",
+      "html": "<a class=\"ds-prose-link\" href=\"#\">View Transitions API</a>",
+      "css": ".ds-prose-link { color: #09090b; text-decoration: underline; text-decoration-color: rgba(9, 9, 11, 0.15); text-underline-offset: 2px; transition: text-decoration-color 0.15s; } .ds-prose-link:hover { text-decoration-color: rgba(9, 9, 11, 0.075); } .ds-prose-link:focus-visible { outline: 2px solid rgba(9, 9, 11, 0.2); outline-offset: 2px; border-radius: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Typeset Page",
+    "overview": "A single sheet of paper, set in good type, with nothing on it that doesn't need to be there. The site is closer to a well-typeset book page than a web application. Every pixel of chrome is earned; the default state of any element is \"absent.\" The reading experience is the entire product.\n\nThe system rejects spectacle, decoration, and density. No gradient meshes, no particle effects, no project-card grids, no testimonial carousels. The visual hierarchy is built entirely from type weight, opacity, and whitespace. Color is structural (foreground, background, border), never decorative.",
+    "keyCharacteristics": [
+      "Monochrome palette with opacity-based hierarchy (no accent hue)",
+      "Single typeface (Geist Variable) carrying all roles through weight and size alone",
+      "Narrow reading column (max 48rem) with generous vertical rhythm",
+      "Dark and light themes as true inversions, not separate palettes",
+      "Motion restricted to state feedback; no choreography"
+    ],
+    "rules": [
+      { "name": "The No-Hue Rule", "body": "No accent color. No brand hue. Hierarchy comes from opacity and weight, never from a colored element.", "section": "colors" },
+      { "name": "The Opacity-as-Hierarchy Rule", "body": "Every text color is the same hue at a different opacity. 100% is primary, 85% is accent, 60% is muted.", "section": "colors" },
+      { "name": "The One-Family Rule", "body": "Geist Variable is the only typeface. No serif for editorial feel, no mono for technical cred.", "section": "typography" },
+      { "name": "The Weight-Gap Rule", "body": "Adjacent hierarchy levels differ by at least one weight step (400 vs 500, 500 vs 700). Same-weight adjacent levels are forbidden.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "Shadows are prohibited. If an element needs visual separation, use a border at 15% opacity or whitespace.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build hierarchy exclusively through type weight, scale, and opacity.",
+      "Do use the narrow column (max-w-3xl / ~48rem) for all content.",
+      "Do respect the opacity scale: 100% primary, 85% accent, 60% muted, 15% border.",
+      "Do support both light and dark themes as true inversions.",
+      "Do respect prefers-reduced-motion with complete animation removal.",
+      "Do use Geist Variable for all text.",
+      "Do use text-pretty or text-balance on display-level headings."
+    ],
+    "donts": [
+      "Don't add an accent color. The monochrome palette is a deliberate constraint.",
+      "Don't use shadows or elevation of any kind.",
+      "Don't add particle effects, 3D elements, scroll-hijacking animations, or spectacle.",
+      "Don't use the template-portfolio pattern: colorful hero, icon-grid skills, testimonial carousel.",
+      "Don't use gradient meshes, glassmorphism, neon-on-dark, or stacked identical card grids.",
+      "Don't make the blog look like a documentation site.",
+      "Don't add illustrations or decorative SVGs.",
+      "Don't animate layout properties.",
+      "Don't use border-left greater than 1px as a colored accent stripe.",
+      "Don't use gradient text (background-clip: text)."
+    ]
+  }
+}
