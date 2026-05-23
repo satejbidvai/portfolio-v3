@@ -6,4 +6,4 @@ interface Props extends HTMLAttributes<'a'> {}
 const { class: className = '', ...rest } = Astro.props;
 ---
 
-<a {...rest} class={`${className} text-muted-foreground hover:text-foreground transition-colors`}><slot /></a>
+<a {...rest} class={`${className} relative text-muted-foreground hover:text-foreground transition-colors after:content-[''] after:absolute after:-bottom-px after:left-0 after:w-0 after:h-px after:bg-current after:opacity-40 after:transition-[width] after:duration-250 after:ease-[cubic-bezier(0.16,1,0.3,1)] hover:after:w-full motion-reduce:after:transition-none`}><slot /></a>

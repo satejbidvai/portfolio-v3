@@ -6,6 +6,7 @@ import GetInTouch from '../components/home/get-in-touch.astro';
 import BlogCard from '../components/blog/blog-card.astro';
 import { getAllPosts } from '../utils/blog';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Link from '../components/ui/Link.astro';
 
 const allPosts = await getAllPosts();
 const recentPosts = allPosts.slice(0, 3);
@@ -46,9 +47,9 @@ const recentPosts = allPosts.slice(0, 3);
         </div>
         {allPosts.length > 3 && (
           <div class="mt-6">
-            <a href="/blog" class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Link href="/blog" class="text-sm">
               View all posts →
-            </a>
+            </Link>
           </div>
         )}
       </div>
