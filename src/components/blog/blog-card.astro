@@ -17,7 +17,7 @@ const { post, prefetch = 'hover' } = Astro.props;
     class="flex items-center gap-6 px-4 py-3 rounded-lg border border-border/40 hover:border-border/60 hover:bg-background/50 transition-all group"
     data-astro-prefetch={prefetch}
   >
-    <h2 class="text-lg font-medium group-hover:text-foreground/80 transition-colors flex-1">
+    <h2 class="text-lg font-medium group-hover:text-foreground/80 group-hover:translate-x-0.5 transition-all flex-1">
       {post.data.title}
     </h2>
     <time
