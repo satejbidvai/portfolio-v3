@@ -25,5 +25,17 @@ interface Props extends ComponentProps<typeof Head> {}
     </main>
 
     <Analytics />
+
+    <script is:inline>
+      if (typeof window !== 'undefined' && !window.__sb_greeted) {
+        window.__sb_greeted = true;
+        console.log(
+          "\n\n%cBuilt with Astro, Tailwind, and unreasonable attention to detail %c\n\n%cHiring / Building something cool? Let's chat: satej.bidvai+portfolio@gmail.com",
+          'background: #09090b; color: #f9f9f9; font-size: 13px; font-weight: 500; padding: 8px 12px; border-radius: 4px;',
+          '',
+          'background: #f9f9f9; color: #09090b; font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 4px;'
+        );
+      }
+    </script>
   </body>
 </html>
