@@ -52,7 +52,9 @@ const { Content } = await render(post);
       </div>
     </header>
 
-    <div class="prose max-w-none dark:prose-invert">
+    <div
+      class="prose max-w-none dark:prose-invert prose-p:text-pretty prose-blockquote:text-pretty prose-li:text-pretty"
+    >
       <Content components={MDX_COMPONENTS} />
     </div>
   </article>
