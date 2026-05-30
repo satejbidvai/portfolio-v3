@@ -1,0 +1,24 @@
+---
+import MainLayout from '../layouts/main-layout.astro';
+import Link from '../components/ui/Link.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<MainLayout
+  title={`Not Found — ${SITE_TITLE}`}
+  description="This page doesn't exist."
+  url="/404"
+  ogImage="/og-image.png"
+>
+  <div class="mt-24 md:mt-32">
+    <p class="text-muted-foreground text-sm mb-3">404</p>
+    <h1 class="text-2xl md:text-3xl font-bold mb-4">This page doesn't exist.</h1>
+    <p class="text-muted-foreground leading-relaxed mb-8 text-pretty">
+      As Terry Pratchett said, &ldquo;Humans are always lost. It's a basic characteristic.&rdquo;
+    </p>
+    <nav class="flex gap-6">
+      <Link href="/" class="text-sm">← Home</Link>
+      <Link href="/blog" class="text-sm">Blog</Link>
+    </nav>
+  </div>
+</MainLayout>
