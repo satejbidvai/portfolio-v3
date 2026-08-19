@@ -31,6 +31,8 @@
 </button>
 
 <script>
+  import { play } from 'cuelume';
+
   function syncThemeState() {
     const isDark = document.documentElement.classList.contains('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
@@ -48,6 +50,8 @@
     const button = document.getElementById('rotating-toggle');
 
     button?.addEventListener('click', () => {
+      play('toggle', { volume: 0.4 });
+
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       // If user prefers reduced motion or View Transitions API is not supported
