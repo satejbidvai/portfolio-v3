@@ -6,6 +6,7 @@
   id="rotating-toggle"
   class="relative p-3 -mt-2 rounded-lg transition-opacity hover:opacity-70"
   aria-label="Toggle theme"
+  aria-keyshortcuts="D"
 >
   <div class="relative w-full h-full flex items-center justify-center">
     <svg
@@ -45,6 +46,15 @@
       }, 75);
     }
   }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key.toLowerCase() !== 'd') return;
+    if (event.repeat || event.isComposing) return;
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]')) return;
+
+    document.getElementById('rotating-toggle')?.click();
+  });
 
   document.addEventListener('astro:page-load', () => {
     const button = document.getElementById('rotating-toggle');
