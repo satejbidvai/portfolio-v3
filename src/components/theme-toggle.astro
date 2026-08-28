@@ -1,5 +1,5 @@
 ---
-
+import { Moon, Sun } from '@lucide/astro';
 ---
 
 <button
@@ -8,26 +8,15 @@
   aria-label="Toggle theme"
   aria-keyshortcuts="D"
 >
-  <div class="relative w-full h-full flex items-center justify-center">
-    <svg
-      class="sun-icon rotate-0 dark:rotate-180 opacity-100 dark:opacity-0 w-5 h-5 text-foreground transition-all duration-300 ease-out"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <circle cx="12" cy="12" r="4"></circle>
-      <path
-        d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
-      ></path>
-    </svg>
-    <svg
-      class="moon-icon -rotate-180 dark:rotate-0 opacity-0 dark:opacity-100 w-5 h-5 text-foreground absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
+  <div class="grid size-5 place-items-center">
+    <Sun
+      class="col-start-1 row-start-1 size-5 text-foreground transition-all duration-300 ease-out rotate-0 opacity-100 dark:rotate-180 dark:opacity-0"
+      stroke-width={1.25}
+    />
+    <Moon
+      class="col-start-1 row-start-1 size-5 text-foreground transition-all duration-300 ease-out -rotate-180 opacity-0 dark:rotate-0 dark:opacity-100"
+      stroke-width={1.25}
+    />
   </div>
 </button>
 
@@ -53,13 +42,17 @@
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]')) return;
 
-    document.getElementById('rotating-toggle')?.click();
+    const button = document.getElementById('rotating-toggle');
+    if (!button) return;
+
+    button.click();
   });
 
   document.addEventListener('astro:page-load', () => {
     const button = document.getElementById('rotating-toggle');
+    if (!button) return;
 
-    button?.addEventListener('click', () => {
+    button.addEventListener('click', () => {
       play('toggle', { volume: 0.4 });
 
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
