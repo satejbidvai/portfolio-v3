@@ -4,11 +4,12 @@ Personal portfolio site for Satej Bidvai.
 
 ## Tech Stack
 
-- **Astro 5.14.1** — Static site generation
-- **Tailwind CSS 4.1.14** — Utility-first styling with design tokens
-- **TypeScript** — Type safety
-- **Geist Font** — Typography
-- **Vercel** — Hosting
+- **Astro 7.2.1** - Static site generation
+- **Tailwind CSS 4.2.1** - Utility-first styling with design tokens
+- **TypeScript** - Type safety
+- **Bun** - Package management and runtime
+- **Geist Font** - Typography
+- **Vercel** - Hosting
 
 ## Project Structure
 
@@ -30,16 +31,16 @@ All commands run from the project root:
 
 ```bash
 # Install dependencies
-pnpm install
+bun install
 
 # Start dev server at localhost:4321
-pnpm dev
+bun run dev
 
 # Build for production (includes type checking)
-pnpm build
+bun run build
 
 # Preview production build locally
-pnpm preview
+bun run preview
 ```
 
 The build process includes `astro check` for TypeScript validation before generating the static output.
