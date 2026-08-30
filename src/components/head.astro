@@ -56,10 +56,6 @@ const ogImageURL = `${siteURL}${ogImage}`;
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageURL} />
 
-<!-- Theme Color -->
-<meta name="theme-color" content="#09090B" />
-
-<!-- Toggle theme color based on user preference -->
 <script is:inline>
   const getThemePreference = () => {
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -68,15 +64,9 @@ const ogImageURL = `${siteURL}${ogImage}`;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   };
 
-  const updateThemeColor = (isDark) => {
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (metaThemeColor) metaThemeColor.setAttribute('content', isDark ? '#09090B' : '#FFFFFF');
-  };
-
   function applyTheme() {
     const isDark = getThemePreference() === 'dark';
     document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
-    updateThemeColor(isDark);
   }
 
   applyTheme();

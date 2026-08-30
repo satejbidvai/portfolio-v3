@@ -26,14 +26,6 @@ import { Moon, Sun } from '@lucide/astro';
   function syncThemeState() {
     const isDark = document.documentElement.classList.contains('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
-    // Delay to sync with theme toggle animation
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
-    if (metaThemeColor) {
-      setTimeout(() => {
-        metaThemeColor.setAttribute('content', isDark ? '#09090B' : '#FFFFFF');
-      }, 75);
-    }
   }
 
   document.addEventListener('keydown', (event) => {
